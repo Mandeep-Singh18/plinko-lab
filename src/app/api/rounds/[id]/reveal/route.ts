@@ -6,10 +6,10 @@ const prisma = new PrismaClient();
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) { 
   try {
-    const { id: roundId } = await params;
+    const { id: roundId } = await context.params;
     
     // 1. Find the started round
     const round = await prisma.round.findUnique({

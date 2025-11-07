@@ -16,10 +16,10 @@ const startSchema = z.object({
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id: roundId } = await params;
+    const { id: roundId } = await context.params;
     
     // 1. Validate the request body
     const body = await request.json();
