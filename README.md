@@ -14,10 +14,9 @@ It features:
 
 | Page | Link |
 |------|------|
-| **Live Game** | https://YOUR_VERCEL_DEPLOYMENT_URL |
-| **Verifier Page** | https://YOUR_VERCEL_DEPLOYMENT_URL/verify |
+| **Live Game** | https://plinko-lab-two.vercel.app/ |
+| **Verifier Page** | https://plinko-lab-two.vercel.app/verify |
 
-> Replace these after deployment.
 
 ---
 
@@ -40,7 +39,7 @@ It features:
 Clone
 
 ```
-git clone YOUR_GITHUB_REPO_URL
+git clone https://github.com/Mandeep-Singh18/plinko-lab.git
 cd plinko-lab
 ```
 
