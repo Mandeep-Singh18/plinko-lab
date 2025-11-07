@@ -1,13 +1,13 @@
 // src/app/api/rounds/[id]/reveal/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
-) {
+) { 
   try {
     const { id: roundId } = await params;
     

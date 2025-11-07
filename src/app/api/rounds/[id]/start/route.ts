@@ -1,5 +1,5 @@
 // src/app/api/rounds/[id]/start/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { sha256hex } from '@/lib/fairness';
 import { generateRound } from '@/lib/engine';
@@ -15,7 +15,7 @@ const startSchema = z.object({
 });
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
@@ -31,7 +31,10 @@ export async function POST(
 
     // 2. Find the round created by /commit
     const round = await prisma.round.findUnique({
-      where: { id: roundId },
+      where: { 
+        id: roundId,
+        status: 'CREATED'
+      },
     });
 
     if (!round || !round.serverSeed || round.status !== 'CREATED') {
